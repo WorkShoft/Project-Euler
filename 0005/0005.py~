@@ -1,0 +1,56 @@
+import math, importlib
+
+
+def factors(number):
+    for i in range(1, number):
+        if number % i == 0:
+            yield i
+            
+def prime_factors(sequence):
+    """
+    Number of factors < sqrt(number)
+    """
+
+    prime_factors = []
+    
+    for i in sequence:
+        if is_prime(i) == False:
+            new_sequence = list(factors(i))
+            print(new_sequence)
+
+
+def is_prime(number):
+    if len(list(factors(number))) == 1:
+        return True
+    return False
+    
+    
+def n_factors(number):
+    return count_iterable(factors(number))
+
+def evenly_divisible(sequence, n_range):
+    for s in sequence:
+        divisible = True
+        
+        for n in n_range:
+            if s % n != 0:
+                divisible = False
+
+        if divisible == True:
+            return s
+        divisible = True
+
+#print(list(factors(10)))
+print(list(factors(10)))
+prime_factors(range(20))
+
+# max_divisible = evenly_divisible([math.factorial(i) for i in range(1, 20)], range(10, 20))
+# print(max_divisible)
+
+# while evenly_divisible([max_divisible], range(1, 21)) != None:
+#     print(max_divisible / 2520)
+#     max_divisible /= 2520
+
+        
+                
+
